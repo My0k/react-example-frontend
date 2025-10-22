@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard with Charts - Dark Theme</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i data-lucide="bar-chart-3"></i>
+            Dashboard
+        </div>
+        <div class="user-info">
+            <button class="theme-toggle" onclick="window.location.href='example-graph-light.html'">
+                <i data-lucide="sun"></i>
+            </button>
+            <div class="avatar">JD</div>
+            <span class="user-name">John Doe</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Overview</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="bell"></i>
+                <span>Integrations</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="user"></i>
+                <span>Account</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Overview</h1>
+                <p>Welcome back! Here's what's happening with your business today.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">$24,500</div>
+                            <div class="stat-label">Total Revenue</div>
+                        </div>
+                        <div class="stat-icon purple">
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change positive">
+                        <i data-lucide="trending-up"></i>
+                        +12.5%
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">1,845</div>
+                            <div class="stat-label">New Customers</div>
+                        </div>
+                        <div class="stat-icon green">
+                            <i data-lucide="users"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change positive">
+                        <i data-lucide="trending-up"></i>
+                        +8.2%
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">456</div>
+                            <div class="stat-label">Active Orders</div>
+                        </div>
+                        <div class="stat-icon blue">
+                            <i data-lucide="package"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change negative">
+                        <i data-lucide="trending-down"></i>
+                        -3.1%
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">98.5%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                        <div class="stat-icon orange">
+                            <i data-lucide="star"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change positive">
+                        <i data-lucide="trending-up"></i>
+                        +2.3%
+                    </span>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="content-grid">
+                <!-- Revenue Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Revenue Overview</h2>
+                        <a href="#" class="card-action">
+                            Last 7 days
+                            <i data-lucide="chevron-down"></i>
+                        </a>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Orders Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Order Status</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="ordersChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Chart -->
+            <div class="card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <h2 class="card-title">Customer Growth</h2>
+                    <a href="#" class="card-action">
+                        View report
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+                <div class="chart-container">
+                    <canvas id="customerChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Dark theme configuration for charts
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.borderColor = '#334155';
+
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [3200, 4100, 3800, 5200, 4800, 5600, 6100],
+                    borderColor: '#a5b4fc',
+                    backgroundColor: 'rgba(165, 180, 252, 0.08)',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#a5b4fc',
+                    pointBorderColor: '#1e293b',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        titleColor: '#f1f5f9',
+                        bodyColor: '#94a3b8',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.y.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#334155',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: {
+                                size: 12
+                            },
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Orders Chart
+        const ordersCtx = document.getElementById('ordersChart').getContext('2d');
+        new Chart(ordersCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Pending', 'Failed'],
+                datasets: [{
+                    data: [65, 25, 10],
+                    backgroundColor: [
+                        '#34d399',
+                        '#fbbf24',
+                        '#f87171'
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#94a3b8',
+                            font: {
+                                size: 13
+                            },
+                            padding: 15,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        titleColor: '#f1f5f9',
+                        bodyColor: '#94a3b8',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Customer Chart
+        const customerCtx = document.getElementById('customerChart').getContext('2d');
+        new Chart(customerCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'New Customers',
+                    data: [245, 312, 298, 387, 456, 512],
+                    backgroundColor: '#a5b4fc',
+                    borderRadius: 8,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        titleColor: '#f1f5f9',
+                        bodyColor: '#94a3b8',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#334155',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

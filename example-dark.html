@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Dark Theme</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i data-lucide="bar-chart-3"></i>
+            Dashboard
+        </div>
+        <div class="user-info">
+            <button class="theme-toggle" onclick="window.location.href='example-light.html'">
+                <i data-lucide="sun"></i>
+            </button>
+            <div class="avatar">JD</div>
+            <span class="user-name">John Doe</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Overview</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="bell"></i>
+                <span>Integrations</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </div>
+            <div class="nav-item">
+                <i data-lucide="user"></i>
+                <span>Account</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Overview</h1>
+                <p>Welcome back! Here's what's happening with your business today.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">$24,500</div>
+                            <div class="stat-label">Total Revenue</div>
+                        </div>
+                        <div class="stat-icon purple">
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change positive">
+                        <i data-lucide="trending-up"></i>
+                        +12.5%
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">1,845</div>
+                            <div class="stat-label">New Customers</div>
+                        </div>
+                        <div class="stat-icon green">
+                            <i data-lucide="users"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change positive">
+                        <i data-lucide="trending-up"></i>
+                        +8.2%
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">456</div>
+                            <div class="stat-label">Active Orders</div>
+                        </div>
+                        <div class="stat-icon blue">
+                            <i data-lucide="package"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change negative">
+                        <i data-lucide="trending-down"></i>
+                        -3.1%
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-value">98.5%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                        <div class="stat-icon orange">
+                            <i data-lucide="star"></i>
+                        </div>
+                    </div>
+                    <span class="stat-change positive">
+                        <i data-lucide="trending-up"></i>
+                        +2.3%
+                    </span>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Recent Orders -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Orders</h2>
+                        <a href="#" class="card-action">
+                            View all
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>Alice Johnson</td>
+                                <td>$245.00</td>
+                                <td>
+                                    <span class="status-badge success">
+                                        <i data-lucide="check-circle"></i>
+                                        Completed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>Bob Smith</td>
+                                <td>$189.50</td>
+                                <td>
+                                    <span class="status-badge pending">
+                                        <i data-lucide="clock"></i>
+                                        Pending
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-003</td>
+                                <td>Carol Williams</td>
+                                <td>$420.00</td>
+                                <td>
+                                    <span class="status-badge success">
+                                        <i data-lucide="check-circle"></i>
+                                        Completed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-004</td>
+                                <td>David Brown</td>
+                                <td>$156.75</td>
+                                <td>
+                                    <span class="status-badge failed">
+                                        <i data-lucide="x-circle"></i>
+                                        Failed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-005</td>
+                                <td>Emma Davis</td>
+                                <td>$298.00</td>
+                                <td>
+                                    <span class="status-badge pending">
+                                        <i data-lucide="clock"></i>
+                                        Pending
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Activity</h2>
+                    </div>
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(79, 70, 229, 0.25) 100%); color: #a5b4fc;">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">New order created</div>
+                                <div class="activity-time">2 minutes ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.25) 100%); color: #34d399;">
+                                <i data-lucide="credit-card"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Payment received</div>
+                                <div class="activity-time">15 minutes ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.25) 100%); color: #60a5fa;">
+                                <i data-lucide="user-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">New customer registered</div>
+                                <div class="activity-time">1 hour ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.25) 100%); color: #fbbf24;">
+                                <i data-lucide="alert-triangle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Low stock alert</div>
+                                <div class="activity-time">3 hours ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(79, 70, 229, 0.25) 100%); color: #a5b4fc;">
+                                <i data-lucide="bar-chart"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Report generated</div>
+                                <div class="activity-time">5 hours ago</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
